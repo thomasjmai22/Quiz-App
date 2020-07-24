@@ -1,0 +1,26 @@
+.quiz,
+.summary {
+  display: none;
+}
+
+.quiz ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quiz li {
+  cursor: pointer;
+}
+
+.selected {
+  color: yellow;
+}
+
+body {
+  background-image: url("https://theluxauthority.com/wp-content/uploads/2018/10/IMpact-of-Star-Wars-7-1068x601.jpg");
+  color: white;
+}
+
+a {
+  color: yellowgreen;
+}
