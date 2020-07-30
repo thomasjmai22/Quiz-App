@@ -6,33 +6,38 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-   
     <div class="start">
       <h1>THE STAR WARS QUIZ</h1>
       <h2>Test Your Jedi Skills</h2>
-      <a href="">Start Quiz</a> 
+      <a class="startButton" href="">Start Quiz</a>
     </div>
 
-    <div class = "quiz"
-        <h2>Question</h2>
-        <ul>
-          <li>choice</li>
-          <li>choice</li>
-          <li>choice</li>
-          <li>choice</li>
-        </ul>
-        <a href="">Submit Answer</a>
-      </div>
+    <div class="quiz">
+      <h2>Question</h2>
+      <ul>
+        <li>choice</li>
+        <li>choice</li>
+        <li>choice</li>
+        <li>choice</li>
+      </ul>
+      <a class="submitAnswer" href="">Submit Answer</a>
+      <!-- <a class="previousQuestion" href="">Previous Question</a> -->
+      <a class="nextQuestion" href="">Next Question</a>
+    </div>
 
-      <div class = "summary"
-        <h2>Summary Screen</h2>
-        <p>Congrats you scored x out of y correct!</p>
-        <a href="">Restart Quiz</a>
-      </div>
- 
- 
-      <script src="index.js"></script>
-      </body>
+    <div class="submission">
+      <p>Your Answer: <span class="your-answer"></span></p>
+      <p>Correct Answer: <span class="correct-answer"></span></p>
+    </div>
 
- 
+    <div class="summary">
+      <h2>Summary Screen</h2>
+      <p>Congrats you scored x out of y correct!</p>
+      <a href="#" class="restart-quiz">Restart Quiz</a>
+    </div>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="index.js"></script>
+  </body>
 </html>
