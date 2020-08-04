@@ -12,18 +12,33 @@
       <a class="startButton" href="">Start Quiz</a>
     </div>
 
-    <div class="quiz">
+    <section class="quiz">
+      <header>
+        <p>
+          Score: <span class="score"></span> | Question
+          <span class="currentQuestion"></span> of
+          <span class="totalQuestions"></span>
+        </p>
+      </header>
       <h2>Question</h2>
-      <ul>
-        <li>choice</li>
-        <li>choice</li>
-        <li>choice</li>
-        <li>choice</li>
-      </ul>
-      <a class="submitAnswer" href="">Submit Answer</a>
-      <!-- <a class="previousQuestion" href="">Previous Question</a> -->
-      <a class="nextQuestion" href="">Next Question</a>
-    </div>
+      <form name="radioAnswers">
+        <input type="radio" name="choice" value="0" id="choice-1" /><label
+          for="label-0"
+        ></label>
+        <input type="radio" name="choice" value="0" id="choice-2" /><label
+          for="label-1"
+        ></label>
+        <input type="radio" name="choice" value="0" id="choice-3" /><label
+          for="label-3"
+        ></label>
+        <input type="radio" name="choice" value="0" id="choice-4" /><label
+          for="label-4"
+        ></label>
+      </form>
+
+      <a class="submitAnswer" href="#">Submit Answer</a>
+      <a class="nextQuestion" href="#">Next Question</a>
+    </section>
 
     <div class="submission">
       <p>Your Answer: <span class="your-answer"></span></p>

@@ -12,14 +12,19 @@ let questions = [
     correct: 3,
   },
   {
-    title: "How old was Yoda when he died",
+    title: "How old was Yoda when he died?",
     answers: [2000, 500, 900, 1000],
     correct: 2,
   },
   {
-    title: "What planet did Luke Skywalker grow up on",
+    title: "What planet did Luke Skywalker grow up on?",
     answers: ["Tatooine", "Earth", "Hoth", "Alderaan"],
     correct: 0,
+  },
+  {
+    title: "What is the Jedi's weapon of choice?",
+    answers: ["Sword", "Plasma Rifle", "Lightsaber", "Axe"],
+    correct: 2,
   },
 ];
 
@@ -28,15 +33,11 @@ $(document).ready(function () {
     e.preventDefault();
     $(".start").hide();
     $(".quiz").show();
+    updateScore();
     showQuestion(0);
-  });
-  $(".quiz ul").on("click", "li", function () {
-    $(".selected").removeClass("selected");
-    $(this).addClass("selected");
   });
 
   $(".submitAnswer").click(checkAnswer);
-  // $(".previousQuestion").click(previousQuestion);
   $(".nextQuestion").click(nextQuestion);
   $(".restart-quiz").click(restartQuiz);
 });
@@ -45,9 +46,11 @@ function showQuestion(current) {
   $(".nextQuestion").hide();
   let question = questions[current];
   $(".quiz h2").text(question.title);
-  $(".quiz ul").html("");
+  $(".quiz form").html("");
   for (let i = 0; i < question.answers.length; i++) {
-    $(".quiz ul").append(`<li id='${i}'>${question.answers[i]}</li>`);
+    $(".quiz form").append(
+      `<p><label for='${i}'>${question.answers[i]}</label><input type="radio" id="${i}" value="${i}" name="choice" /></p>`
+    );
   }
 }
 
@@ -57,6 +60,7 @@ function nextQuestion(e) {
   console.log(currentQuestion);
   if (currentQuestion < questions.length - 1) {
     currentQuestion += 1;
+    updateScore();
     showQuestion(currentQuestion);
   } else {
     console.log("results");
@@ -64,20 +68,29 @@ function nextQuestion(e) {
   }
 }
 
+function updateScore() {
+  $(".score").text(score);
+  $(".currentQuestion").text(currentQuestion + 1);
+  $(".totalQuestions").text(questions.length);
+}
+
 function checkAnswer(e) {
   e.preventDefault();
 
-  if (!$(".selected").length) {
+  if (!$('input[type="radio"]:checked').length) {
     return alert("Please select an answer");
   }
   $(".nextQuestion").show();
-  const selected = $(".selected").text();
+  const selected =
+    questions[currentQuestion].answers[$('input[type="radio"]:checked').val()];
   const correctIdx = questions[currentQuestion].correct;
   const correct = questions[currentQuestion].answers[correctIdx];
 
-  if ($(".selected").attr("id") == correctIdx) {
+  if ($('input[type="radio"]:checked').val() == correctIdx) {
     score++;
   }
+
+  updateScore();
 
   $(".submission").show();
   $(".your-answer").text(selected);
@@ -96,6 +109,7 @@ function restartQuiz(e) {
   e.preventDefault();
   score = 0;
   currentQuestion = 0;
+  updateScore();
   $(".quiz").show();
   $(".summary").hide();
   showQuestion(currentQuestion);
